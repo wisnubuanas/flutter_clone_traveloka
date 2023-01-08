@@ -26,6 +26,8 @@ class _AwalState extends State<Awal> {
           Akun(),
           Divider(),
           MenuUtama(),
+          MenuTambahan(),
+          Promo(),
         ],
       ),
     );
@@ -97,13 +99,13 @@ List<MenuUtamaItem> menuUtamaItem = [
   MenuUtamaItem(
     title: 'Tiket Pesawat',
     icon: Icons.flight,
-    colorBox: Colors.blue.shade200,
+    colorBox: Colors.blue,
     iconColor: Colors.white,
   ),
   MenuUtamaItem(
     title: 'Tiket Hotel',
     icon: Icons.hotel,
-    colorBox: Colors.blue,
+    colorBox: Colors.blue.shade900,
     iconColor: Colors.white,
   ),
   MenuUtamaItem(
@@ -119,9 +121,15 @@ List<MenuUtamaItem> menuUtamaItem = [
     iconColor: Colors.white,
   ),
   MenuUtamaItem(
+    title: "Kuliner",
+    icon: Icons.local_dining,
+    colorBox: Colors.orange,
+    iconColor: Colors.white,
+  ),
+  MenuUtamaItem(
     title: 'Tiket Kereta Api',
     icon: Icons.train,
-    colorBox: Colors.orange,
+    colorBox: Colors.orange.shade300,
     iconColor: Colors.white,
   ),
   MenuUtamaItem(
@@ -144,8 +152,8 @@ List<MenuUtamaItem> menuUtamaItem = [
   ),
   MenuUtamaItem(
     title: 'Semua Produk',
-    icon: Icons.blur_on,
-    colorBox: Colors.grey,
+    icon: Icons.dashboard_customize_outlined,
+    colorBox: Colors.grey.shade300,
     iconColor: Colors.black,
   ),
 ];
@@ -179,6 +187,153 @@ class MenuUtamaItem extends StatelessWidget {
             title,
             style: TextStyle(fontSize: 12),
             textAlign: TextAlign.center,
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class MenuTambahan extends StatelessWidget {
+  const MenuTambahan({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 20),
+      height: 100,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: menuTambahan,
+      ),
+    );
+  }
+}
+
+List<MenuTambahanItem> menuTambahan = [
+  MenuTambahanItem(title: 'Tagihan & Isi Ulang', icon: Icons.receipt),
+  MenuTambahanItem(title: 'Pay Later', icon: Icons.payment),
+  MenuTambahanItem(
+      title: 'Status Penerbangan', icon: Icons.airplanemode_active),
+  MenuTambahanItem(
+      title: 'Pulsa & Paket Internet', icon: Icons.signal_cellular_4_bar),
+  MenuTambahanItem(title: 'Online Check-In', icon: Icons.airplanemode_inactive),
+  MenuTambahanItem(title: 'Notifikasi Harga', icon: Icons.notifications),
+];
+
+class MenuTambahanItem extends StatelessWidget {
+  const MenuTambahanItem({required this.title, required this.icon});
+  final String title;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 100,
+      child: Column(
+        children: [
+          Icon(icon),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class Promo extends StatelessWidget {
+  const Promo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        ListTile(
+          title: Text(
+            'Promo Saat Ini',
+            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22.0),
+          ),
+          trailing: IconButton(
+            icon: Icon(Icons.keyboard_arrow_right),
+            onPressed: () {},
+          ),
+        ),
+        Container(
+          width: double.infinity,
+          height: 150.0,
+          padding: const EdgeInsets.only(left: 8.0),
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.blue,
+                        Colors.blue.shade800,
+                      ]),
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                // padding: EdgeInsets.all(8.0),
+                margin: EdgeInsets.only(left: 8.0),
+                height: 150.0,
+                width: 100.0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                        decoration: BoxDecoration(
+                            color: Colors.pink,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.elliptical(20.0, 20.0),
+                                bottomRight: Radius.elliptical(150.0, 150.0))),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 2.0, left: 5.0, right: 30.0, bottom: 30.0),
+                          child: Text(
+                            '%',
+                            style:
+                                TextStyle(fontSize: 24.0, color: Colors.white),
+                          ),
+                        )),
+                    Expanded(
+                      child: Container(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Lihat Semua \nPromo',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            fontSize: 18.0),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.blue,
+                          Colors.blue.shade800,
+                        ]),
+                    borderRadius: BorderRadius.circular(8.0),
+                    image:
+                        DecorationImage(image: AssetImage('images/promo.jpg'))),
+                margin: EdgeInsets.only(left: 10.0),
+                height: 150.0,
+                width: 300.0,
+                child: null,
+              )
+            ],
           ),
         )
       ],
