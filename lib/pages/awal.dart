@@ -13,14 +13,52 @@ class _AwalState extends State<Awal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text("Traveloka"),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.more_horiz),
-          )
-        ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: "Coba pengalaman baru sekarang",
+                        prefixIcon: Icon(Icons.search),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide.none),
+                        // icon: Icon(Icons.notification_add),
+                        filled: true,
+                        fillColor: Colors.white),
+                    // style: Colors.white,
+                  ),
+                ),
+                Icon(
+                  Icons.notifications,
+                  color: Colors.white,
+                ),
+                Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
+      // appBar: AppBar(
+      //   title: Text("Traveloka"),
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () {},
+      //       icon: Icon(Icons.more_horiz),
+      //     )
+      //   ],
+      // ),
       body: ListView(
         children: [
           Akun(),
@@ -39,46 +77,111 @@ class Akun extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: ListTile(
-        leading: Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: NetworkImage(
-                    "https://www.valuewalk.com/wp-content/uploads/2019/04/Mark-Zuckerberg.jpg"),
-              )),
-        ),
-        title: Text(
-          "Mark Zuckerberg",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        subtitle: Row(
-          children: [
-            ElevatedButton.icon(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.album,
-                  // color: Colors.black,
-                ),
-                label: Text(
-                  "300 Point",
-                  // selectionColor: Colors.black,
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.blueAccent,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6)),
-                )),
-          ],
-        ),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      height: 70,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+              color: Color(0xFFe8e8e8), blurRadius: 5, offset: Offset(0, 5)),
+        ],
+
+        // Icon(Icons.qr_code_2),
+      ),
+      child: Row(
+        children: [
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 150, top: 5),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.monetization_on_outlined),
+                        color: Colors.white,
+                      ),
+                      Text("Points",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  Text("5000", style: TextStyle(color: Colors.white)),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 110),
+            child: Text(
+              "|",
+              style: TextStyle(
+                  color: Colors.white,
+                  // fontWeight: FontWeight.bold,
+                  fontSize: 40),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10, top: 5),
+            child: Column(
+              children: [
+                IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.qr_code_2),
+                    color: Colors.white),
+                // Icon(Icons)
+                Text("Bayar", style: TextStyle(color: Colors.white)),
+              ],
+            ),
+          ),
+        ],
       ),
     );
+
+    // Padding(
+    //   padding: const EdgeInsets.symmetric(vertical: 8),
+    //   child: ListTile(
+    //     leading: Container(
+    //       width: 50,
+    //       height: 50,
+    //       decoration: BoxDecoration(
+    //           shape: BoxShape.circle,
+    //           image: DecorationImage(
+    //             fit: BoxFit.fill,
+    //             image: NetworkImage(
+    //                 "https://www.valuewalk.com/wp-content/uploads/2019/04/Mark-Zuckerberg.jpg"),
+    //           )),
+    //     ),
+    //     title: Text(
+    //       "Mark Zuckerberg",
+    //       style: TextStyle(fontWeight: FontWeight.bold),
+    //     ),
+    //     subtitle: Row(
+    //       children: [
+    //         ElevatedButton.icon(
+    //             onPressed: () {},
+    //             icon: Icon(
+    //               Icons.album,
+    //               // color: Colors.black,
+    //             ),
+    //             label: Text(
+    //               "300 Point",
+    //               // selectionColor: Colors.black,
+    //             ),
+    //             style: ElevatedButton.styleFrom(
+    //               primary: Colors.blueAccent,
+    //               elevation: 0,
+    //               shape: RoundedRectangleBorder(
+    //                   borderRadius: BorderRadius.circular(6)),
+    //             )),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }
 
@@ -213,12 +316,11 @@ class MenuTambahan extends StatelessWidget {
 List<MenuTambahanItem> menuTambahan = [
   MenuTambahanItem(title: 'Tagihan & Isi Ulang', icon: Icons.receipt),
   MenuTambahanItem(title: 'Pay Later', icon: Icons.payment),
-  MenuTambahanItem(
-      title: 'Status Penerbangan', icon: Icons.airplanemode_active),
-  MenuTambahanItem(
-      title: 'Pulsa & Paket Internet', icon: Icons.signal_cellular_4_bar),
-  MenuTambahanItem(title: 'Online Check-In', icon: Icons.airplanemode_inactive),
-  MenuTambahanItem(title: 'Notifikasi Harga', icon: Icons.notifications),
+  MenuTambahanItem(title: 'Game', icon: Icons.gamepad),
+  MenuTambahanItem(title: 'Bioskop', icon: Icons.movie_filter_outlined),
+  MenuTambahanItem(title: 'Spa & Perawatan', icon: Icons.shower_outlined),
+  MenuTambahanItem(title: 'Atraksi', icon: Icons.surfing),
+  MenuTambahanItem(title: 'Kesehatan', icon: Icons.health_and_safety),
 ];
 
 class MenuTambahanItem extends StatelessWidget {
@@ -256,7 +358,10 @@ class Promo extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22.0),
           ),
           trailing: IconButton(
-            icon: Icon(Icons.keyboard_arrow_right),
+            icon: Icon(
+              Icons.keyboard_arrow_right,
+              color: Colors.blue,
+            ),
             onPressed: () {},
           ),
         ),
