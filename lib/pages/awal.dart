@@ -94,7 +94,7 @@ class Akun extends StatelessWidget {
         children: [
           Center(
             child: Padding(
-              padding: const EdgeInsets.only(left: 150, top: 5),
+              padding: const EdgeInsets.only(top: 5, left: 5),
               child: Column(
                 children: [
                   Row(
@@ -110,13 +110,64 @@ class Akun extends StatelessWidget {
                               fontWeight: FontWeight.bold)),
                     ],
                   ),
-                  Text("5000", style: TextStyle(color: Colors.white)),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text("Rp. 5.267",
+                        style: TextStyle(color: Colors.white)),
+                  ),
                 ],
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 110),
+            padding: const EdgeInsets.only(top: 5, left: 20),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.payment_outlined),
+                      color: Colors.white,
+                    ),
+                    Text("Paylater",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child:
+                      Text("Aktifkan", style: TextStyle(color: Colors.white)),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 5, left: 20),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.local_play_outlined),
+                      color: Colors.white,
+                    ),
+                    Text("Voucher",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.bold)),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 40),
+                  child: Text("99+", style: TextStyle(color: Colors.white)),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 30),
             child: Text(
               "|",
               style: TextStyle(
@@ -272,27 +323,30 @@ class MenuUtamaItem extends StatelessWidget {
   final Color colorBox, iconColor;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          // padding: EdgeInsets.only(bottom: 10),
-          height: 50,
-          width: 50,
-          decoration: BoxDecoration(color: colorBox, shape: BoxShape.circle),
-          child: Icon(
-            icon,
-            color: iconColor,
+    return GestureDetector(
+      onTap: () {},
+      child: Column(
+        children: [
+          Container(
+            // padding: EdgeInsets.only(bottom: 10),
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(color: colorBox, shape: BoxShape.circle),
+            child: Icon(
+              icon,
+              color: iconColor,
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 2.0),
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 12),
-            textAlign: TextAlign.center,
-          ),
-        )
-      ],
+          Padding(
+            padding: const EdgeInsets.only(top: 2.0),
+            child: Text(
+              title,
+              style: TextStyle(fontSize: 12),
+              textAlign: TextAlign.center,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -320,7 +374,7 @@ List<MenuTambahanItem> menuTambahan = [
   MenuTambahanItem(title: 'Bioskop', icon: Icons.movie_filter_outlined),
   MenuTambahanItem(title: 'Spa & Perawatan', icon: Icons.shower_outlined),
   MenuTambahanItem(title: 'Atraksi', icon: Icons.surfing),
-  MenuTambahanItem(title: 'Kesehatan', icon: Icons.health_and_safety),
+  MenuTambahanItem(title: 'Kesehatan', icon: Icons.medical_services_outlined),
 ];
 
 class MenuTambahanItem extends StatelessWidget {
